@@ -1,8 +1,6 @@
 # NEON AI (TM) SOFTWARE, Software Development Kit & Application Framework
 # All trademark and other rights reserved by their respective owners
-# Copyright 2008-2022 Neongecko.com Inc.
-# Contributors: Daniel McKnight, Guy Daniels, Elon Gasper, Richard Leeds,
-# Regina Bloomstine, Casimiro Ferreira, Andrii Pernatii, Kirill Hrymailo
+# Contributors: Brian Resnick
 # BSD-3 License
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -27,12 +25,14 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from neon_utils.skills.neon_skill import NeonSkill
+from .ql800Printer import Printer
+from datetime import datetime
 
 
-class NewSkill(NeonSkill):  # TODO: Update this class name
+class PrintLabel(NeonSkill):  # TODO: Update this class name
     def __init__(self):
-        super(NewSkill, self).__init__(name="NewSkill")  # TODO: Update passed name (usually matches class name)
+        super(NewSkill, self).__init__(name="skill-printlabel.bjrati")  # TODO: Update passed name (usually matches class name)
 
 
 def create_skill():
-    return NewSkill()
+    return PrintLabel()

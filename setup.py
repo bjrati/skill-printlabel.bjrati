@@ -29,10 +29,10 @@
 from setuptools import setup
 from os import getenv, path, walk
 
-SKILL_NAME = ""  # TODO: Name skill like "skill-my_awesome_skill"
+SKILL_NAME = "skill-printlabel.bjrati"  # TODO: Name skill like "skill-my_awesome_skill"
 SKILL_PKG = SKILL_NAME.replace('-', '_')
 # skill_id=package_name:SkillClass
-PLUGIN_ENTRY_POINT = f'{SKILL_NAME}.neongeckocom={SKILL_PKG}:NewSkill'  # TODO: Update "NewSkill" to match skill class
+PLUGIN_ENTRY_POINT = f'{SKILL_NAME}.neongeckocom={SKILL_PKG}:PrintSkill'  # TODO: Update "NewSkill" to match skill class
 BASE_PATH = path.abspath(path.dirname(__file__))
 
 
@@ -90,13 +90,13 @@ with open(path.join(BASE_PATH, "version.py"), "r", encoding="utf-8") as v:
 #   author: Name of the skill author, generally a GitHub username
 #   author_email: Email that is listed publicly on PyPI
 setup(
-    name=f"neon-{SKILL_NAME}",
+    name=f"neon-skill-printlabel.bjrati",
     version=version,
-    url=f'https://github.com/NeonGeckoCom/{SKILL_NAME}',
+    url=f'https://github.com/bjrati/skill-printlabel.bjrati',
     license='BSD-3-Clause',  # TODO: Make sure this matches `LICENSE.md`
     install_requires=get_requirements("requirements.txt"),
-    author='Neongecko',
-    author_email='developers@neon.ai',
+    author='bjrati',
+    author_email='bjrati@gmail.com',
     long_description=long_description,
     long_description_content_type="text/markdown",
     package_dir={SKILL_PKG: ""},
