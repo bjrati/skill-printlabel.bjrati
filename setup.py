@@ -29,10 +29,10 @@
 from setuptools import setup
 from os import getenv, path, walk
 
-SKILL_NAME = "skill-printlabel.bjrati"  # TODO: Name skill like "skill-my_awesome_skill"
+SKILL_NAME = "skill-printlabel.bjrati"
 SKILL_PKG = SKILL_NAME.replace('-', '_')
 # skill_id=package_name:SkillClass
-PLUGIN_ENTRY_POINT = f'{SKILL_NAME}.neongeckocom={SKILL_PKG}:PrintSkill'  # TODO: Update "NewSkill" to match skill class
+PLUGIN_ENTRY_POINT = f'{SKILL_NAME}.neongeckocom={SKILL_PKG}:PrintSkill'
 BASE_PATH = path.abspath(path.dirname(__file__))
 
 
@@ -58,7 +58,7 @@ def get_requirements(requirements_filename: str):
 
 
 def find_resource_files():
-    resource_base_dirs = ("locale", "ui", "vocab", "dialog", "regex", "res")
+    resource_base_dirs = ("locale")
     base_dir = BASE_PATH
     package_data = ["skill.json"]
     for res in resource_base_dirs:
@@ -93,7 +93,7 @@ setup(
     name=f"neon-skill-printlabel.bjrati",
     version=version,
     url=f'https://github.com/bjrati/skill-printlabel.bjrati',
-    license='BSD-3-Clause',  # TODO: Make sure this matches `LICENSE.md`
+    license='BSD-3-Clause',  # Make sure this matches `LICENSE.md` It is.
     install_requires=get_requirements("requirements.txt"),
     author='bjrati',
     author_email='bjrati@gmail.com',

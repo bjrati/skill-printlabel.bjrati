@@ -33,7 +33,10 @@ from .ql800Printer import Printer
 from datetime import datetime
 
 
-class PrintLabel(NeonSkill):  
+class PrintLabel(NeonSkill):
+    def __init__(self):
+        self.printer = Printer()
+
     @classproperty
     def runtime_requirements(self):
         return RuntimeRequirements(network_before_load=False,
@@ -45,11 +48,12 @@ class PrintLabel(NeonSkill):
                                    no_internet_fallback=True,
                                    no_network_fallback=True,
                                    no_gui_fallback=True)
-                                   
+
     @intent_handler(IntentBuilder('PrintLabelIntent').require('PrintKeyword').require('LabelKeyword'))
     def handle_print_label_intent(self, message):
         date = datetime.today().strftime('%m/%d/%Y')
         self.log.info(date)
+        # self.printer = Printer()  # Musts recreate each call?
 
         # testing extract_number
         utt = message.data.get('utterance')
@@ -59,30 +63,30 @@ class PrintLabel(NeonSkill):
         self.log.info("Possible qty text: " + possible_qty_text)
         qty = int(extract_number(possible_qty_text))
         if qty == 0:
-          # Check for 'to' instead of 'two' and 'for' instead of 'four'
-          if possible_qty_text.find("to") >= 0:
-            qty = 2
-          elif possible_qty_text.find("for") >= 0:
-            qty = 4
-          else:
-            qty = 1
-          pass
+            # Check for 'to' instead of 'two' and 'for' instead of 'four'
+            if possible_qty_text.find("to") >= 0:
+                qty = 2
+            elif possible_qty_text.find("for") >= 0:
+                qty = 4
+            else:
+                qty = 1
+            pass
         self.log.info(qty)
         # Check for description which begins with "for" after "label(s)"
         post_label_text = utt[offset_label + 5:]
-        offsetFor = post_label_text.find("for")
-        if (offsetFor > -1):
-           description = post_label_text[offsetFor+4:]
-           description = description.upper()
-           self.log.info(description)  # Diagnostic
-           self.printer.print_label_two_lines(date, description, qty)
+        offset_for = post_label_text.find("for")
+        if offset_for > -1:
+            description = post_label_text[offset_for + 4:]
+            description = description.upper()
+            self.log.info(description)  # Diagnostic
+            self.printer.print_label_two_lines(date, description, qty)
         else:
-           self.printer.print_label_one_line(date, qty)
-           pass
+            self.printer.print_label_one_line(date, qty)
+            pass
 
     def stop(self):
-        pass           
+        pass
 
+def create_skill():
+    return PrintLabel()
 
-# def create_skill():
-#    return PrintLabel()

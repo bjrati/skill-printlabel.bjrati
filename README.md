@@ -18,7 +18,7 @@ Labels display the time and date at the top, and the optional purpose below.
 * "Print one label" 
 
 ## Contact Support
-Use the [link](https://neongecko.com/ContactUs) or [submit an issue on GitHub](https://help.github.com/en/articles/creating-an-issue)
+Use [submit an issue on GitHub](https://help.github.com/en/articles/creating-an-issue)
 
 ## Credits
 [bjrati](https://github.com/bjrati)
