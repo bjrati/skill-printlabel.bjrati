@@ -4,11 +4,11 @@ Neon Mark2 skill for printing food container labels on a Brother QL-800 printer.
 
 ## Description
 Prints labels on a Brother QL-800 printer. 
-Utterance is parsed for 'Print' and 'label' or 'labels'.
-A quantity of labels may be specified.
-Optionally, the labels 'purpose' may be included after the word 'for'.
+The Utterance is parsed for 'Print' and 'Label(s)'. 
+A quantity of labels may be specified between 'Print' and 'Label(s)'.
+Optionally, the label's **contents** may be specified after the word 'For'; see example below.
 
-Labels display the time and date at the top, and the optional purpose below.
+Each label displays the time and date at the top, and the optional **content text** below.
 
 ## Examples
 * "Print label"  
